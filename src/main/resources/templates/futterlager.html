@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Futterlager</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+<h1>Futterlagerbestand</h1>
+<table>
+    <tr>
+        <th>Name</th><th>Menge (kg)</th>
+    </tr>
+    <tr th:each="futter : ${futterlager}">
+        <td th:text="${futter.name}"></td>
+        <td th:text="${futter.menge}"></td>
+    </tr>
+</table>
+</body>
+</html>

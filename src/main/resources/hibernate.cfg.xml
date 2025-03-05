@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+  <session-factory>
+    <!-- SQLite Datenbank-URL -->
+    <property name="hibernate.connection.driver_class">org.sqlite.JDBC</property>
+    <property name="hibernate.connection.url">jdbc:sqlite:src/main/resources/DB/DB.db</property>
+    <property name="hibernate.dialect">org.hibernate.community.dialect.SQLiteDialect</property>
+
+    <!-- Automatisches Schema-Update -->
+    <property name="hibernate.hbm2ddl.auto">update</property>
+
+    <!-- Logging (Optional) -->
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.format_sql">true</property>
+  </session-factory>
+</hibernate-configuration>

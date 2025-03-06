@@ -19,9 +19,8 @@
     <@macro_background/>
 </head>
     <body class="background-container">
-    <@macro_header title="Willkommen beim Universal Tier-Tool (UTT)"
-    subtitle="Ihr Tool für eine optimale Tierverwaltung und Pflege"
-    detail=false/>
+    <@macro_header_uebersicht title="Willkommen beim Universal Tier-Tool (UTT)"
+    subtitle="Ihr Tool für eine optimale Tierverwaltung und Pflege"/>
 
     <div class="container mt-4">
         <div class="row">

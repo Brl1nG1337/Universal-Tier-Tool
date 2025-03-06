@@ -2,40 +2,55 @@
 <html lang="de">
 <head>
     <#include "macros.ftl">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-          rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <#include "assigns.ftl">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
     <script src="/js/script.js"></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Krankheiten</title>
+    <title>${assing_krankheiten_card_title}</title>
     <link rel="icon" href="/images/favicon.png" type="image/png">
     <link rel="stylesheet" href="/css/styles.css">
+    <@macro_background/>
 </head>
-<body>
-<@macro_header/>
-<div id="table-container">
-    <table class="styled-table">
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Ansteckend</th>
-            <th>Behandlung</th>
-        </tr>
-        </thead>
-        <tbody>
-        <#list krankheiten as krankheit>
+<body class="background-container">
+<@macro_header_detail title="${assing_krankheiten_card_title}"/>
+<div id="table-container" class="container pt-3">
+    <div class="col-md-10">
+        <@macro_zurueck_btn/>
+        <table class="table">
+            <thead>
             <tr>
-                <td title="Name">${krankheit.name!'-'}</td>
-                <td title="Ansteckend">${krankheit.ansteckend!'-'}</td>
-                <td title="Behandlung">${krankheit.behandlungsmassnahme!'-'}</td>
+                <th>Name</th>
+                <th>Ansteckend</th>
+                <th>Behandlung</th>
             </tr>
-        </#list>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            <#list krankheiten as krankheit>
+                <tr>
+                    <td title="Name">${krankheit.name!'-'}</td>
+                    <td title="Ansteckend">
+                        <#if (krankheit.ansteckend!0) == 0>
+                            Nein
+                        <#else>
+                            Ja
+                        </#if>
+                    </td>
+                    <td title="Behandlung">${krankheit.behandlungsmassnahme!'-'}</td>
+                </tr>
+            </#list>
+            </tbody>
+        </table>
+    </div>
 </div>
+<@macro_footer/>
 </body>
 </html>

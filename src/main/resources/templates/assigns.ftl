@@ -1,6 +1,6 @@
 <#--tier-card-->
 <#assign assign_imageUrl_tier_card="/images/card-tiere.jpg"/>
-<#assign assing_tier_card_title="Tier Übersicht"/>
+<#assign assing_tier_card_title="Tier-Übersicht"/>
 <#assign assing_tier_card_subtitle="Hier können Sie sich alle Tiere und wichtige
                         Informationen dazu ansehen"/>
 

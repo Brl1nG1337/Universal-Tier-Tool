@@ -39,7 +39,10 @@
 }
 
 body {
-  background-color: var(--color-light-beige);;
+  background-color: var(--color-light-beige);
+  display: grid;
+  grid-template-rows: auto 1fr auto; /* Header, Inhalt, Footer */
+  min-height: 100vh;
 }
 
 
@@ -59,7 +62,7 @@ body {
 table {
   border-radius: 10px; /* Hier kannst du den Wert nach Bedarf anpassen */
   overflow: hidden !important; /* Wichtig, damit die Ecken ordentlich abgerundet werden */
-  border-color: var(--color-dark-green)!important;
+  border-color: var(--color-dark-green) !important;
 }
 
 #detail-button {
@@ -100,4 +103,9 @@ table {
 
 .bd-mode-toggle .dropdown-menu .active .bi {
   display: block !important;
+}
+
+.toast-body {
+  font-weight: bold;
+  font-size: 1rem;
 }

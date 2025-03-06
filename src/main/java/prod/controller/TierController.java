@@ -15,6 +15,7 @@ import prod.dao.KrankheitDao;
 import prod.dao.TierDao;
 import prod.domain.Krankheit;
 import prod.domain.Tier;
+import prod.dto.TierKrankheitDto;
 
 @Controller
 public class TierController {
@@ -35,7 +36,6 @@ public class TierController {
 
   @GetMapping("/tiere")
   public String tiere(Model model) {
-    // Tiere aus der DB laden und ans Model übergeben
     final List<Tier> alleTiere = tierDao.findAll();
     model.addAttribute("tiere", alleTiere);
     return "tiere";
@@ -88,5 +88,16 @@ public class TierController {
   public String showFuetterungsplan(Model model) {
     model.addAttribute("gehege", gehegeeDao.findAll());
     return "fuetterung";
+  }
+
+  @GetMapping("/besondere-pflege")
+  public String showBesondere(Model model) {
+    final List<Tier> allSchwanger = tierDao.findAllSchwanger();
+    final List<Tier> jungTiere = tierDao.findAllJungtiere();
+    final List<TierKrankheitDto> krankeTiere = tierDao.findAllKrankeTiere();
+    model.addAttribute("schwangereTiere", allSchwanger);
+    model.addAttribute("jungtiere", jungTiere);
+    model.addAttribute("tierKrankheitDtos", krankeTiere);
+    return "besondere-pflege";
   }
 }

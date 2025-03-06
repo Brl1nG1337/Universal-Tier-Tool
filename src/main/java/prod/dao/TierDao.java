@@ -31,30 +31,22 @@ public class TierDao extends GenericDaoImpl<Tier, Long> {
         + " t where t.jahre <= 3 order by t.tierID asc", Tier.class).getResultList();
   }
 
-
   public List<TierKrankheitDto> findAllKrankeTiere() {
     String sql =
-        "SELECT tierID, tiername, krankheit, ansteckend, behandlungsmassnahme FROM v_tierKrankheiten order by tierID asc"; // Ersetzen Sie "v_tierKrankheiten" mit dem tatsächlichen Namen Ihrer View
-
+        "SELECT tierID, tiername, krankheit, ansteckend, behandlungsmassnahme FROM v_tierKrankheiten order by tierID asc";
     List<Object[]> resultList = entityManager.createNativeQuery(sql).getResultList();
     return convertToTierKrankheitDto(resultList);
   }
 
   private List<TierKrankheitDto> convertToTierKrankheitDto(List<Object[]> resultList) {
     List<TierKrankheitDto> dtoList = new ArrayList<>();
-
     for (Object[] resultArray : resultList) {
-      // Erstellen Sie ein neues DTO für jede Zeile in den Ergebnissen
       TierKrankheitDto dto = new TierKrankheitDto();
-
-      // Konvertieren Sie die einzelnen Werte aus dem Array in die DTO-Attribute
-      dto.setTierId((Integer) resultArray[0]); // TierID als Integer
-      dto.setTiername((String) resultArray[1]); // Tiername als String
-      dto.setKrankheit((String) resultArray[2]); // Krankheit als String
-      dto.setAnsteckend((resultArray[3].equals(1) ? "Ja" : "Nein")); // Ansteckend als boolean
-      dto.setBehandlungsmassnahme((String) resultArray[4]); // Behandlungsmassnahme als String
-
-      // Fügen Sie das DTO zur Ergebnisliste hinzu
+      dto.setTierId((Integer) resultArray[0]);
+      dto.setTiername((String) resultArray[1]);
+      dto.setKrankheit((String) resultArray[2]);
+      dto.setAnsteckend((resultArray[3].equals(1) ? "Ja" : "Nein"));
+      dto.setBehandlungsmassnahme((String) resultArray[4]);
       dtoList.add(dto);
     }
 

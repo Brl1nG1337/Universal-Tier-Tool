@@ -23,7 +23,7 @@ public class Futter {
   private Integer futterID;
   private String name;
   @Column(name = "menge_kg")
-  private Double mengeKg;
+  private Double menge_kg;
   @ManyToOne
   @JoinColumn(name = "futterlagerID")
   private Futterlager futterlager;
@@ -32,6 +32,6 @@ public class Futter {
   public Futter(Integer futterID, String name, Double mengeKg) {
     this.futterID = futterID;
     this.name = name;
-    this.mengeKg = mengeKg;
+    this.menge_kg = mengeKg;
   }
 }

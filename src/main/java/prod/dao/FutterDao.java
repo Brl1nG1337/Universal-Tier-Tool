@@ -17,16 +17,9 @@ public class FutterDao extends GenericDaoImpl<Futter, Long> {
   }
 
   @Override
-  @Query(value = "SELECT f1_0.futterid, f1_0.futterlagerid, f1_0.MengeKg, f1_0.name FROM futter f1_0;", nativeQuery = true)
+  @Query(value = "SELECT f1_0.futterid, f1_0.futterlagerid, f1_0.menge_kg, f1_0.name FROM futter f1_0;", nativeQuery = true)
   public List<Futter> findAll() {
     return super.findAll();
   }
 
-  public List<Lagerbestand> findAllFutter() {
-    try {
-      return entityManager.createQuery("SELECT lb FROM Lagerbestand lb", Lagerbestand.class).getResultList();
-    } catch (NoResultException e) {
-      return null;  // Rückgabe null, wenn keine Ergebnisse gefunden wurden
-    }
-  }
 }

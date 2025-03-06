@@ -26,6 +26,8 @@
     <div class="col-md-10">
         <@macro_zurueck_btn/>
         <table class="table">
+            <@macro_toast id="fuetterungszeitenToast"
+            text="SELECT g.name, g.fuetterungszeit FROM gehege <br>order by g.gehegeId asc"/>
             <thead>
             <tr>
                 <th>Gehege</th>

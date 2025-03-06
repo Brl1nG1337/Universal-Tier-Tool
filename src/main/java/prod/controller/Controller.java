@@ -3,22 +3,22 @@ package prod.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import prod.dao.FutterDao;
 import prod.dao.GehegeDao;
 import prod.dao.KrankheitDao;
+import prod.dao.LogEntryDao;
 import prod.dao.TierDao;
 import prod.domain.Krankheit;
+import prod.domain.LogEntry;
 import prod.domain.Tier;
 import prod.dto.TierKrankheitDto;
 
-@Controller
-public class TierController {
+@org.springframework.stereotype.Controller
+public class Controller {
 
   @Autowired
   private TierDao tierDao;
@@ -28,6 +28,8 @@ public class TierController {
   private FutterDao futterDao;
   @Autowired
   private GehegeDao gehegeeDao;
+  @Autowired
+  private LogEntryDao logEntryDao;
 
   @GetMapping("/")
   public String home() {
@@ -56,14 +58,6 @@ public class TierController {
   }
 
 
-
-  @PostMapping("/tiere/add")
-  public String addTier(@RequestParam String name, @RequestParam String tierart,
-      @RequestParam String geschlecht) {
-    // Tier in die DB speichern
-    return "redirect:/tiere";
-  }
-
   @GetMapping("/krankheiten")
   public String krankheiten(Model model) {
     // Krankheiten aus der DB laden
@@ -76,12 +70,6 @@ public class TierController {
   public String futterlager(Model model) {
     model.addAttribute("futterList", futterDao.findAll());
     return "futterlager";
-  }
-
-  @PostMapping("/futterlager/order")
-  public String orderFutter(@RequestParam int futterId) {
-    // Automatische Nachbestellung von Futter
-    return "redirect:/futterlager";
   }
 
   @GetMapping("/fuetterung")
@@ -99,5 +87,12 @@ public class TierController {
     model.addAttribute("jungtiere", jungTiere);
     model.addAttribute("tierKrankheitDtos", krankeTiere);
     return "besondere-pflege";
+  }
+
+  @GetMapping("/bestellungen")
+  public String bestellungen(Model model) {
+    final List<LogEntry> bestellungen = logEntryDao.findAllBestellungen();
+    model.addAttribute("bestellungen", bestellungen);
+    return "bestellungen";
   }
 }

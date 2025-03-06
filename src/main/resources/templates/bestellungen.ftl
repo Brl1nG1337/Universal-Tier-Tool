@@ -15,38 +15,32 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${assing_krankheiten_card_title}</title>
+    <title>${assing_bestellungen_card_title}</title>
     <link rel="icon" href="/images/favicon.png" type="image/png">
     <link rel="stylesheet" href="/css/styles.css">
     <@macro_background/>
 </head>
 <body class="background-container">
-<@macro_header_detail title="${assing_krankheiten_card_title}"/>
+<@macro_header_detail title="${assing_bestellungen_card_title}"/>
 <div id="table-container" class="container pt-3">
     <div class="col-md-10">
         <@macro_zurueck_btn/>
         <table class="table">
-            <@macro_toast id="fuetterungszeitenToast"
-            text="SELECT k.name, k.ansteckend, k.behandlung <br>FROM krankheit <br>order by k.krankheitId asc"/>
+            <@macro_toast id="bestellungen"
+            text="SELECT * FROM log_entry le <br>WHERE le.typ = 'bestellung' <br>order by le.id asc"/>
             <thead>
             <tr>
-                <th>Name</th>
-                <th>Ansteckend</th>
-                <th>Behandlung</th>
+                <th>LogEntry ID</th>
+                <th>Detail</th>
+                <th>Datum/Uhrzeit</th>
             </tr>
             </thead>
             <tbody>
-            <#list krankheiten as krankheit>
+            <#list bestellungen as bestellung>
                 <tr>
-                    <td title="Name">${krankheit.name!'-'}</td>
-                    <td title="Ansteckend">
-                        <#if (krankheit.ansteckend!0) == 0>
-                            Nein
-                        <#else>
-                            Ja
-                        </#if>
-                    </td>
-                    <td title="Behandlung">${krankheit.behandlungsmassnahme!'-'}</td>
+                    <td>${bestellung.logId!'-'}</td>
+                    <td>${bestellung.detail!'-'}</td>
+                    <td>${bestellung.datum!'-'}</td>
                 </tr>
             </#list>
             </tbody>

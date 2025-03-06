@@ -75,7 +75,7 @@
                 imageUrl="${assign_imageUrl_bestellungen_card}"
                 title="${assing_bestellungen_card_title}"
                 subtitle="${assing_bestellungen_card_subtitle}"
-                refUrl="/bestellliste"
+                refUrl="/bestellungen"
                 buttonLabel="Bestellungen anzeigen"
             />
         </div>

@@ -11,7 +11,7 @@
     <property name="hibernate.dialect">org.hibernate.community.dialect.SQLiteDialect</property>
 
     <!-- Automatisches Schema-Update -->
-    <property name="hibernate.hbm2ddl.auto">update</property>
+    <property name="hibernate.hbm2ddl.auto">none</property>
 
     <!-- Logging (Optional) -->
     <property name="hibernate.show_sql">true</property>

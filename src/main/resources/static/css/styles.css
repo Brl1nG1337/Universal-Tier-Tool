@@ -1,43 +1,103 @@
+:root {
+  --color-light-beige: #DAD7CD;
+  --color-light-green: #A3B18A;
+  --color-dark-green: #588157;
+  --color-darkest-green: #3A5A40;
+  --color-very-dark-green: #344E41;
+
+  .bg-dark-subtle {
+    background-color: var(--color-very-dark-green) !important;
+  }
+
+  .btn-primary {
+    color: #fff;
+    background-color: var(--color-dark-green);
+    border: none;
+  }
+
+  .btn-primary:hover {
+    color: #fff;
+    background-color: var(--color-darkest-green);
+    border: none;
+  }
+}
+
 body {
-    background-color: lightgray;
+  background-color: var(--color-light-beige);;
+}
+
+
+.card {
+  background-color: var(--color-light-green);
+}
+
+.card:hover {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 #table-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.styled-table tbody tr {
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
-}
-
-.styled-table tbody tr.active-row {
-    font-weight: bold;
-    color: #009879;
-}
-
-.styled-table {
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-}
-
-
-.styled-table thead tr {
-    background-color: #009879;
-    color: #ffffff;
-    text-align: left;
-}
-
-.styled-table th,
-.styled-table td {
-    padding: 12px 15px;
+table {
+  border-radius: 10px; /* Hier kannst du den Wert nach Bedarf anpassen */
+  overflow: hidden; /* Wichtig, damit die Ecken ordentlich abgerundet werden */
 }
 
 #detail-button {
-    border-radius: 8px;
+  border-radius: 8px;
+}
+
+.card-body .card-img-top .card {
+  border-radius: 10px !important;
+}
+
+.bi {
+  vertical-align: -.125em;
+  fill: currentColor;
+}
+
+.nav-scroller {
+  position: relative;
+  z-index: 2;
+  height: 2.75rem;
+  overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+  display: flex;
+  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  margin-top: -1px;
+  overflow-x: auto;
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.btn-bd-primary {
+  --bd-violet-bg: #712cf9;
+  --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: var(--bs-white);
+  --bs-btn-bg: var(--bd-violet-bg);
+  --bs-btn-border-color: var(--bd-violet-bg);
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: #6528e0;
+  --bs-btn-hover-border-color: #6528e0;
+  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+  --bs-btn-active-color: var(--bs-btn-hover-color);
+  --bs-btn-active-bg: #5a23c8;
+  --bs-btn-active-border-color: #5a23c8;
+}
+
+.bd-mode-toggle {
+  z-index: 1500;
+}
+
+.bd-mode-toggle .dropdown-menu .active .bi {
+  display: block !important;
 }

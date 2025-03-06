@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-<@macro_logo/>
+<@macro_header/>
 <div id="table-container">
     <table class="styled-table">
         <thead>

@@ -1,5 +1,6 @@
 package prod.domain;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,9 +22,16 @@ public class Futter {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer futterID;
   private String name;
+  @Column(name = "menge_kg")
   private Double mengeKg;
-
   @ManyToOne
   @JoinColumn(name = "futterlagerID")
   private Futterlager futterlager;
+
+
+  public Futter(Integer futterID, String name, Double mengeKg) {
+    this.futterID = futterID;
+    this.name = name;
+    this.mengeKg = mengeKg;
+  }
 }

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import prod.dao.FutterDao;
+import prod.dao.GehegeDao;
 import prod.dao.KrankheitDao;
 import prod.dao.TierDao;
 import prod.domain.Krankheit;
@@ -21,6 +23,10 @@ public class TierController {
   private TierDao tierDao;
   @Autowired
   private KrankheitDao krankheitDao;
+  @Autowired
+  private FutterDao futterDao;
+  @Autowired
+  private GehegeDao gehegeeDao;
 
   @GetMapping("/")
   public String home() {
@@ -68,7 +74,7 @@ public class TierController {
 
   @GetMapping("/futterlager")
   public String futterlager(Model model) {
-    // Futterlagerbestand anzeigen
+    model.addAttribute("futterList", futterDao.findAll());
     return "futterlager";
   }
 
@@ -76,5 +82,11 @@ public class TierController {
   public String orderFutter(@RequestParam int futterId) {
     // Automatische Nachbestellung von Futter
     return "redirect:/futterlager";
+  }
+
+  @GetMapping("/fuetterung")
+  public String showFuetterungsplan(Model model) {
+    model.addAttribute("gehege", gehegeeDao.findAll());
+    return "fuetterung";
   }
 }

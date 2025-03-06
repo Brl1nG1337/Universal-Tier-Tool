@@ -21,8 +21,13 @@
 <#assign assing_fuetterung_card_subtitle="Sehen Sie, wann und wie viel Futter in welchem Gehege benötigt wird"/>
 
 
-
 <#--besondere-pflege-card-->
 <#assign assign_imageUrl_pflege_card="/images/card-besondere-pflege.jpg"/>
-<#assign assing_pflege_card_title="Besondere Pflege"/>
+<#assign assing_pflege_card_title="Besonders pflegebedürftig"/>
 <#assign assing_pflege_card_subtitle="Jungtiere, schwangere oder erkrankte Tiere im Blick behalten"/>
+
+
+<#--bestellungen-card-->
+<#assign assign_imageUrl_bestellungen_card="/images/card-bestellungen.jpg"/>
+<#assign assing_bestellungen_card_title="Bestellliste"/>
+<#assign assing_bestellungen_card_subtitle="Automatisch generierte Nachbestellungen für Futter"/>

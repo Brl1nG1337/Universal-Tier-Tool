@@ -6,7 +6,19 @@
   --color-very-dark-green: #344E41;
 
   .bg-dark-subtle {
+    background-color: var(--color-darkest-green) !important;
+  }
+
+  .bg-dark {
     background-color: var(--color-very-dark-green) !important;
+  }
+
+  .bg-light {
+    background-color: var(--color-light-green) !important;
+  }
+
+  .table {
+    background-color: var(--color-light-green) !important;
   }
 
   .btn-primary {
@@ -17,8 +29,12 @@
 
   .btn-primary:hover {
     color: #fff;
-    background-color: var(--color-darkest-green);
+    background-color: var(--color-darkest-green) !important;
     border: none;
+  }
+
+  #header-container {
+    box-shadow: 0px 70px 35px rgba(0, 0, 0, 0.4);
   }
 }
 
@@ -38,12 +54,12 @@ body {
 #table-container {
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 table {
   border-radius: 10px; /* Hier kannst du den Wert nach Bedarf anpassen */
-  overflow: hidden; /* Wichtig, damit die Ecken ordentlich abgerundet werden */
+  overflow: hidden !important; /* Wichtig, damit die Ecken ordentlich abgerundet werden */
+  border-color: var(--color-dark-green)!important;
 }
 
 #detail-button {
@@ -77,22 +93,6 @@ table {
   -webkit-overflow-scrolling: touch;
 }
 
-.btn-bd-primary {
-  --bd-violet-bg: #712cf9;
-  --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
-
-  --bs-btn-font-weight: 600;
-  --bs-btn-color: var(--bs-white);
-  --bs-btn-bg: var(--bd-violet-bg);
-  --bs-btn-border-color: var(--bd-violet-bg);
-  --bs-btn-hover-color: var(--bs-white);
-  --bs-btn-hover-bg: #6528e0;
-  --bs-btn-hover-border-color: #6528e0;
-  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
-  --bs-btn-active-color: var(--bs-btn-hover-color);
-  --bs-btn-active-bg: #5a23c8;
-  --bs-btn-active-border-color: #5a23c8;
-}
 
 .bd-mode-toggle {
   z-index: 1500;

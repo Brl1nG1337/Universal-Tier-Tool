@@ -8,7 +8,7 @@ INSERT INTO Gehege VALUES (1, 'Elefantengehege', '8:00', 1), (2, 'Pandagehege', 
 (7, 'Tigergehege', '11:00', 1), (8, 'Schildkroetengehege', '11:30', 1), (9, 'Terarium', '12:00', 1),
 (10, 'Wolfsgehege', '12:30', 1), (11, 'Krokodilgehege', '13:00', 1), (12, 'Flamingogehege',
 '13:30', 1);
-INSERT INTO Tiere VALUES (1, 'Helmut', 'Saeugetier', 'Elefant', 'm', 8, '23.06.2016', 'Afrika', 0,
+INSERT INTO tier VALUES (1, 'Helmut', 'Saeugetier', 'Elefant', 'm', 8, '23.06.2016', 'Afrika', 0,
 1), (2, 'Babara', 'Saeugetier', 'Elefant', 'w', 5, '16.04.2019', 'Afrika', 0, 1), (3, 'Hanna',
 'Saeugetier', 'Elefant', 'w', 10, '07.08.2014', 'Afrika', 1, 1),
  (4, 'Emily', 'Saeugetier', 'Panda', 'w', 3, '18.03.2021', 'China', 0, 2), (5, 'Bernd', 'Saeugetier',

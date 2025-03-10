@@ -22,8 +22,8 @@ public class Futter {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer futterID;
   private String name;
-  @Column(name = "menge_kg")
-  private Double menge_kg;
+  @Column(name = "menge")
+  private Double menge;
   @ManyToOne
   @JoinColumn(name = "futterlagerID")
   private Futterlager futterlager;
@@ -32,6 +32,6 @@ public class Futter {
   public Futter(Integer futterID, String name, Double mengeKg) {
     this.futterID = futterID;
     this.name = name;
-    this.menge_kg = mengeKg;
+    this.menge = mengeKg;
   }
 }

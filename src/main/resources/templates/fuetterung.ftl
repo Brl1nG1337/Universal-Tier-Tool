@@ -22,27 +22,36 @@
 </head>
 <body class="background-container">
 <@macro_header_detail title="${assing_fuetterung_card_title}"/>
+
 <div id="table-container" class="container pt-3">
-    <div class="col-md-10">
+    <div class="col-md-12">
         <@macro_zurueck_btn/>
-        <table class="table">
-            <@macro_toast id="fuetterungszeitenToast"
-            text="SELECT g.name, g.fuetterungszeit FROM gehege <br>order by g.gehegeId asc"/>
-            <thead>
-            <tr>
-                <th>Gehege</th>
-                <th>Fütterungszeitpunkt</th>
-            </tr>
-            </thead>
-            <tbody>
-            <#list gehege as _gehege>
-                <tr>
-                    <td title="Gehege">${_gehege.name}</td>
-                    <td title="Fütterungszeitpunkt">${_gehege.fuetterungszeit} Uhr</td>
-                </tr>
+        <#assign rowId = "row"/>
+        <@macro_slide_in_toast tId="${rowId}" id="fuetterungszeitenToast"
+        text="SELECT <br>g.gehegeid,<br> g.name,<br> g.fuetterungszeit,<br> f.name,<br> ft.futtermenge_kg<br>" +
+        "FROM gehege g <br>" +
+        "JOIN futterlager fl<br> ON g.futterlagerid = fl.futterlagerid <br>" +
+        "JOIN futtertrog ft<br> ON g.gehegeid = ft.gehegeid <br>" +
+        "JOIN futter f<br> ON ft.futterid = f.futterid <br>" +
+        "ORDER BY g.gehegeid ASC<br>"/>
+
+        <!-- Zeitplan als Cards -->
+        <div id="${rowId}" class="row" style="max-width: 85%; margin: 0 auto;">
+            <#list gehegeFuetterungsDtos as dto>
+                <div class="col-md-4 mb-4">
+                    <div class="card bg-dark-subtle shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title text-light bold">${dto.gehegeName} (${dto.gehegeId})</h5>
+                            <p class="card-text text-light">
+                                Futter: ${dto.futterName}<br>
+                                Fütterungszeit: ${dto.fuetterungszeit} Uhr<br>
+                                Menge: ${dto.futterMenge} KG<br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </#list>
-            </tbody>
-        </table>
+        </div>
     </div>
 </div>
 

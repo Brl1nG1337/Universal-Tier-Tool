@@ -25,9 +25,11 @@
 <div id="table-container" class="container pt-3">
     <div class="col-md-10">
         <@macro_zurueck_btn/>
-        <h1 class="text-light" style="font-size: 2rem">Schwangere Tiere</h1>
-        <table class="table">
-            <@macro_toast id="schwangereTiereToast" text="SELECT t FROM tier t <br>where t.schwanger = 1 <br>order by t.tierID asc"/>
+        <h1 class="text-light" style="font-size: 1.6rem">Schwangere Tiere</h1>
+        <#assign tableId = "table-schwanger"/>
+        <@macro_slide_in_toast tId="${tableId}" id="schwangereTiereToast"
+            text="SELECT t FROM tier t <br>where t.schwanger = 1 <br>order by t.tierID asc"/>
+        <table id="${tableId}" class="table">
             <thead>
             <tr>
                 <th>Tier ID</th>
@@ -53,9 +55,11 @@
 <div id="table-container" class="container pt-3">
     <div class="col-md-10">
         <h1 class="text-light" style="font-size: 2rem">Jungtiere</h1>
-        <table class="table">
-            <@macro_toast id="jungtereToast"
-            text="SELECT t FROM tier t <br>where t.jahre <= 3 <br>order by t.tierID asc"/>
+        <#assign tableId = "table-jungtiere"/>
+        <@macro_slide_in_toast tId="${tableId}" id="jungtereToast"
+        text="SELECT t FROM tier t <br>where t.jahre <= 3 <br>order by t.tierID asc"
+        delay="1000"/>
+        <table id="${tableId}" class="table">
             <thead>
             <tr>
                 <th>Tier ID</th>
@@ -81,9 +85,11 @@
 <div id="table-container" class="container pt-3">
     <div class="col-md-10">
         <h1 class="text-light" style="font-size: 2rem">Kranke Tiere</h1>
-        <table class="table">
-            <@macro_toast id="krankeTiereToast"
-            text="SELECT tierID, tiername, krankheit, ansteckend, behandlungsmassnahme <br>FROM v_tierKrankheiten <br>order by tierID asc"/>
+        <#assign tableId = "table-kranke-tiere"/>
+        <@macro_slide_in_toast tId="${tableId}" id="toast-krank"
+        text="SELECT tierID, tiername, krankheit, ansteckend, behandlungsmassnahme <br>FROM v_tierKrankheiten <br>order by tierID asc"
+        delay="1500"/>
+        <table id="${tableId}" class="table">
             <thead>
             <tr>
                 <th>Tier ID</th>

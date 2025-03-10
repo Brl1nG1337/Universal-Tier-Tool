@@ -15,6 +15,7 @@ import prod.dao.TierDao;
 import prod.domain.Krankheit;
 import prod.domain.LogEntry;
 import prod.domain.Tier;
+import prod.dto.GehegeFuetterungDto;
 import prod.dto.TierKrankheitDto;
 
 @org.springframework.stereotype.Controller
@@ -74,7 +75,8 @@ public class Controller {
 
   @GetMapping("/fuetterung")
   public String showFuetterungsplan(Model model) {
-    model.addAttribute("gehege", gehegeeDao.findAll());
+    final List<GehegeFuetterungDto> allFuetterungsZeiten = gehegeeDao.findAllFuetterungsZeiten();
+    model.addAttribute("gehegeFuetterungsDtos", allFuetterungsZeiten);
     return "fuetterung";
   }
 

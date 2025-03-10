@@ -25,9 +25,10 @@
 <div id="table-container" class="container pt-3">
     <div class="col-md-10">
         <@macro_zurueck_btn/>
-        <table class="table">
-            <@macro_toast id="bestellungen"
-            text="SELECT * FROM log_entry le <br>WHERE le.typ = 'bestellung' <br>order by le.id asc"/>
+        <#assign tableId = "table-bestellungen"/>
+        <@macro_slide_in_toast tId="${tableId}" id="bestellungen"
+        text="SELECT * FROM log_entry le <br>WHERE le.typ = 'bestellung' <br>order by le.id asc"/>
+        <table id="${tableId}" class="table">
             <thead>
             <tr>
                 <th>LogEntry ID</th>

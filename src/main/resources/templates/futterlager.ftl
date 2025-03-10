@@ -24,10 +24,11 @@
 <@macro_header_detail title="${assing_futterlager_card_title}"/>
 <div id="table-container" class="container pt-3">
     <div class="col-md-10">
+        <#assign tableId = "table-futterlager"/>
         <@macro_zurueck_btn/>
-        <table class="table">
-            <@macro_toast id="fuetterungszeitenToast"
-            text="SELECT f.name, f.mengeKg <br>FROM futter <br>order by f.futterlagerId asc"/>
+        <@macro_slide_in_toast tId="${tableId}" id="fuetterungszeitenToast"
+        text="SELECT f.name, f.mengeKg <br>FROM futter <br>order by f.futterlagerId asc"/>
+        <table id="${tableId}" class="table">
             <thead>
             <tr>
                 <th>Name</th>
@@ -38,7 +39,7 @@
             <#list futterList as futter>
                 <tr>
                     <td title="Name">${futter.name}</td>
-                    <td title="Menge (kg)">${futter.mengeKg}</td>
+                    <td title="Menge (kg)">${futter.menge}</td>
                 </tr>
             </#list>
             </tbody>

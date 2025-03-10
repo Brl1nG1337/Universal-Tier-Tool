@@ -17,7 +17,7 @@ public class FutterDao extends GenericDaoImpl<Futter, Long> {
   }
 
   @Override
-  @Query(value = "SELECT f1_0.futterid, f1_0.futterlagerid, f1_0.menge_kg, f1_0.name FROM futter f1_0;", nativeQuery = true)
+  @Query(value = "SELECT f1_0.futterid, f1_0.futterlagerid, f1_0.menge, f1_0.name FROM futter f1_0;", nativeQuery = true)
   public List<Futter> findAll() {
     return super.findAll();
   }

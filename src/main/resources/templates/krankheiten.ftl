@@ -25,9 +25,10 @@
 <div id="table-container" class="container pt-3">
     <div class="col-md-10">
         <@macro_zurueck_btn/>
-        <table class="table">
-            <@macro_toast id="fuetterungszeitenToast"
-            text="SELECT k.name, k.ansteckend, k.behandlung <br>FROM krankheit <br>order by k.krankheitId asc"/>
+        <#assign tableId = "table-krankheiten"/>
+        <@macro_slide_in_toast tId="${tableId}" id="fuetterungszeitenToast"
+        text="SELECT k.name, k.ansteckend, k.behandlung <br>FROM krankheit <br>order by k.krankheitId asc"/>
+        <table id="${tableId}" class="table">
             <thead>
             <tr>
                 <th>Name</th>

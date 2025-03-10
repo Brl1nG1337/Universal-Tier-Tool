@@ -124,3 +124,52 @@
         </div>
     </div>
 </#macro>
+
+<#macro macro_slide_in_toast id="" text="" tId="" delay="300">
+    <div id="${id}" class="slide-in-toast bg-dark text-light">${text}</div>
+
+    <style>
+      .slide-in-toast {
+        font-weight: bold !important;
+        font-size: 1.2rem;
+        overflow: hidden;
+        position: absolute;
+        right: -350px;
+        width: 350px;
+        padding: 15px;
+        background-color: #007bff;
+        color: white;
+        border-radius: 5px;
+        box-shadow: 0px 0px 8px 8px rgba(62, 150, 48, 0.6);
+        transition: right 0.5s ease-in-out;
+        z-index: 1000;
+
+      }
+    </style>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        let toast = document.getElementById("${id}");
+        let element = document.getElementById("${tId}");
+        let rowCount = element.getElementsByTagName("tr").length;
+
+        if (element) {
+          let tableRect = element.getBoundingClientRect();
+          let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          toast.style.top = (tableRect.top + scrollTop) + "px";
+          if (rowCount <= 3) {
+            toast.style.height = tableRect.height + "px";
+          } else {
+            toast.style.height = "auto";
+          }
+        }
+
+        setTimeout(() => {
+          toast.style.right = "20px"; // Slidet ins Bild
+        }, ${delay});
+      });
+    </script>
+</#macro>
+
+
+

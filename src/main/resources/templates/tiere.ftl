@@ -22,11 +22,12 @@
 </head>
 <body class="background-container">
 <@macro_header_detail title="${assing_tier_card_title}"/>
-<@macro_toast id="tiereToast" text="SELECT * FROM tier;"/>
 <div id="table-container" class="container pt-3">
     <div class="col-md-10">
         <@macro_zurueck_btn/>
-        <table class="table">
+        <#assign tableId = "table-tiere"/>
+        <@macro_slide_in_toast tId="${tableId}" id="tiereToast" text="SELECT * FROM tier;"/>
+        <table id="${tableId}" class="table">
             <thead>
             <tr>
                 <th scope="col">ID</th>

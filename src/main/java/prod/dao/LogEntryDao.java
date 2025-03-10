@@ -14,7 +14,8 @@ public class LogEntryDao extends GenericDaoImpl<LogEntry, Long> {
   }
 
   public List<LogEntry> findAllBestellungen() {
-    return entityManager.createQuery("Select le FROM " + LogEntry.class.getSimpleName() + " le order by le.logId asc",
+    return entityManager.createQuery(
+                            "Select le FROM " + LogEntry.class.getSimpleName() + " le order by le.logId asc",
                             LogEntry.class).getResultList().stream().filter(e -> e.getTyp().equals("bestellung"))
                         .collect(Collectors.toList());
   }

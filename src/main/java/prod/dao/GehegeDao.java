@@ -16,20 +16,17 @@ public class GehegeDao extends GenericDaoImpl<Gehege, Long> {
   }
 
   public List<GehegeFuetterungDto> findAllFuetterungsZeiten() {
-    String sql =
-        "SELECT g.gehegeid, g.name, g.fuetterungszeit, f.name, ft.futtermenge_kg " +
-            "FROM gehege g " +
-            "JOIN futterlager fl ON g.futterlagerid = fl.futterlagerid " +
-            "JOIN futtertrog ft ON g.gehegeid = ft.gehegeid " +
-            "JOIN futter f ON ft.futterid = f.futterid " +
-            "ORDER BY g.gehegeid ASC";
+    String sql = "SELECT g.gehegeid, g.name, g.fuetterungszeit, f.name, ft.futtermenge_kg "
+        + "FROM gehege g " + "JOIN futterlager fl ON g.futterlagerid = fl.futterlagerid "
+        + "JOIN futtertrog ft ON g.gehegeid = ft.gehegeid "
+        + "JOIN futter f ON ft.futterid = f.futterid " + "ORDER BY g.gehegeid ASC";
 
     List<Object[]> resultList = entityManager.createNativeQuery(sql).getResultList();
     return convertToGehegeFuetterungDto(resultList);
   }
 
   private List<GehegeFuetterungDto> convertToGehegeFuetterungDto(List<Object[]> resultList) {
-    List<GehegeFuetterungDto> dtoList = new   ArrayList<>();
+    List<GehegeFuetterungDto> dtoList = new ArrayList<>();
     for (Object[] resultArray : resultList) {
       GehegeFuetterungDto dto = new GehegeFuetterungDto();
       dto.setGehegeId((Integer) resultArray[0]);
